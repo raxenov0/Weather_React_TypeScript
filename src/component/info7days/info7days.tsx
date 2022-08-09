@@ -1,34 +1,49 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { IDataWeathear, IDaysElement } from "../type/type";
+import { ICurrentDay, IDataWeathear, IDaysElement } from "../type/type";
 import { Element } from "./element";
 import dat from './info7days.module.css'
 import { Today } from "./today";
 
 
+interface IDataWeathearProps{
+    Props:IDataWeathear | null
+}
+export const Info7days: FunctionComponent<IDataWeathearProps> = ({Props}) => {
+  const [items, setItems] = useState<IDaysElement[]>([])
 
-export const Info7days: FunctionComponent<IDataWeathear> = ({
-    apparent_temperature_max, apparent_temperature_min, weathercode, sunrise, sunset, city, current_temp,
-    current_windspeed, current_weathercode
-}: IDataWeathear) => {
+    const Today_Info:ICurrentDay = {
+        day:getDay(0),
+        data:{
+            current_temp:Props?.current_temp,
+            current_windspeed:Props?.current_windspeed,
+            sunrise:Props?.sunrise ? Props.sunrise[0]: undefined,
+            sunset:Props?.sunset ? Props.sunset[0]: undefined,
+            weathercode:Props?.weathercode ? Props.weathercode[0]: undefined,
+            apparent_temperature_max:Props?.apparent_temperature_max ? Props.apparent_temperature_max[0]: undefined,
+            apparent_temperature_min:Props?.apparent_temperature_min ? Props.apparent_temperature_min[0]: undefined,
+        }
+    }
+
+   
 
 
-    function getDay(index: number): String {
+    function getDay(index: number): string {
         const CurrentDay = new Date().getDay() + index;
         var days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
         return days[CurrentDay % 7]
     }
 
-    const [items, setItems] = useState<IDaysElement[]>([])
+  
 
     function dataSeparation() {
         let array: IDaysElement[] = []
         for (let i = 1; i < 7; i++) {
             array.push({
-                apparent_temperature_max: apparent_temperature_max ? apparent_temperature_max[i] : undefined,
-                apparent_temperature_min: apparent_temperature_min ? apparent_temperature_min[i] : undefined,
-                weathercode: weathercode ? weathercode[i] : undefined,
-                sunrise: sunrise ? sunrise[i] : undefined,
-                sunset: sunset ? sunset[i] : undefined
+                apparent_temperature_max: Props?.apparent_temperature_max? Props.apparent_temperature_max[i] : undefined,
+                apparent_temperature_min: Props?.apparent_temperature_min ?  Props.apparent_temperature_min[i] : undefined,
+                weathercode: Props?.weathercode ? Props.weathercode[i] : undefined,
+                sunrise: Props?.sunrise ?  Props.sunrise[i] : undefined,
+                sunset: Props?.sunset ?  Props.sunset[i] : undefined
             })
         }
         setItems(array)
@@ -38,13 +53,12 @@ export const Info7days: FunctionComponent<IDataWeathear> = ({
     useEffect(() => {
 
         dataSeparation()
-    }, [apparent_temperature_max])
-    console.log()
+    }, [ Props?.apparent_temperature_max])
 
     return (
         <div key={1} className={dat.stroke}>
             <div className={dat.main_element}>
-                <Today day={getDay(0)} sunrise={sunrise} sunset={sunset} current_temp={current_temp} current_windspeed={current_windspeed} data={items[0]} />
+                <Today Props={Today_Info} />
             </div>
             {items.map((e, index) => (<Element day={getDay(index + 1)} data={e} key={index} />))}
         </div>

@@ -43,11 +43,7 @@ function App() {
         <div className="wrapper">
           <div className="left_menu">
             <Header city={data?.city} />
-            <Info7days
-              apparent_temperature_max={data?.apparent_temperature_max} apparent_temperature_min={data?.apparent_temperature_min}
-              weathercode={data?.weathercode} sunrise={data?.sunrise} sunset={data?.sunset} city={data?.city} current_temp={data?.current_temp}
-              current_windspeed={data?.current_windspeed} current_weathercode={data?.current_weathercode}
-            />
+            <Info7days Props={data}/>
           </div>
           <div className="right_menu">
             <form className='form_search'>

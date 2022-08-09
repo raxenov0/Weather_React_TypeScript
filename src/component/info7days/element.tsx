@@ -9,10 +9,10 @@ import grow from './../../image/PNG/grow.png'
 import liven from './../../image/PNG/liven.png'
 import thunderstorm from './../../image/PNG/thunderstorm.png'
 
+
 export const Element:React.FunctionComponent<any> = ({day, data}) =>{
 
     let icon;
-
     if(data.weathercode == 0) {icon = son} else 
     if(data.weathercode == 1|| data.weathercode == 2|| data.weathercode == 3) {icon = son_and_cloud} else 
     if(data.weathercode == 45 || data.weathercode == 48 || data.weathercode == 51 || data.weathercode == 53
