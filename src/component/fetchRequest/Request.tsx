@@ -1,6 +1,6 @@
-import { IDataWhethear } from "../type/type"
+import { IDataWeathear } from "../type/type"
 
-export async function getCurrentParams(Function: any, Data: IDataWhethear | null, Geop?: Number[]) {
+export async function getCurrentParams(Function: any, Data: IDataWeathear | null, Geop?: Number[]) {
     if (Geop) getWeatherData(Geop, Function)
     else {
         navigator.geolocation.getCurrentPosition(async function (position) {
@@ -29,7 +29,7 @@ export async function getWeatherData(position: Number[], Function?: any) {
     })
 }
 
-export async function getCurrentCity(position: Number[], Function: any, Data: IDataWhethear | null) {
+export async function getCurrentCity(position: Number[], Function: any, Data: IDataWeathear | null) {
     const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${position ? position[0] : 40}&lon=${position ? position[1] : 40}&limit=5&appid=${process.env.REACT_APP_API_KEY}`).then(rs => rs.json())
     Function?.({
         ...Data, city: response[0].name

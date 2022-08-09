@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import './App.css';
 import { getCurrentParams } from './component/fetchRequest/Request';
-import { ICityElement, IDataWhethear } from './component/type/type';
+import { ICityElement, IDataWeathear } from './component/type/type';
 import { Info7days } from './component/info7days/info7days'
 import { Header } from './component/header/header';
 import StateMutual from './ArrayCitys';
@@ -10,7 +10,7 @@ import { News_data } from './component/news/news';
 
 function App() {
 
-  const [data, setData] = useState<IDataWhethear | null>(null)
+  const [data, setData] = useState<IDataWeathear | null>(null)
   const [geoP, setGeoP] = useState<number[]>([])
   const [isLoading, setIsLoading] = useState<Boolean>(true)
   const [value, setValue] = useState<string>('')

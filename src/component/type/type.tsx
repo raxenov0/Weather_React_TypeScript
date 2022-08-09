@@ -1,4 +1,4 @@
-export interface IDataWhethear{
+export interface IDataWeathear{
     positionCur?: Number[] | undefined
     apparent_temperature_max:Number[]| undefined,
     apparent_temperature_min:Number[]| undefined,
@@ -12,7 +12,7 @@ export interface IDataWhethear{
 }
 
 
-export type IDaysWheather = {
+export type IDaysWeather = {
     apparent_temperature_max:Number[]| undefined,
     apparent_temperature_min:Number[]| undefined,
     weathercode:Number[]| undefined,

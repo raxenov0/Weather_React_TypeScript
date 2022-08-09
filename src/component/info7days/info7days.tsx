@@ -1,15 +1,15 @@
-import React, { FunctionComponent, useState, useEffect, useContext } from "react";
-import { IDataWhethear, IDaysElement, IDaysWheather } from "../type/type";
+import React, { FunctionComponent, useState, useEffect } from "react";
+import { IDataWeathear, IDaysElement } from "../type/type";
 import { Element } from "./element";
 import dat from './info7days.module.css'
 import { Today } from "./today";
 
 
 
-export const Info7days: FunctionComponent<IDataWhethear> = ({
+export const Info7days: FunctionComponent<IDataWeathear> = ({
     apparent_temperature_max, apparent_temperature_min, weathercode, sunrise, sunset, city, current_temp,
     current_windspeed, current_weathercode
-}: IDataWhethear) => {
+}: IDataWeathear) => {
 
 
     function getDay(index: number): String {
