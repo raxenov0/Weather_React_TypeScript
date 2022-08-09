@@ -1,15 +1,20 @@
 import { IDataWeathear } from "../type/type"
 
-export async function getCurrentParams(Function: any, Data: IDataWeathear | null, Geop?: Number[]) {
-    if (Geop) getWeatherData(Geop, Function)
+export async function getCurrentParams(Function: any, Data: IDataWeathear | null, Geop?: Number[], setterFn?:any) {
+    setterFn(true)
+    if (Geop) {
+        await getWeatherData(Geop, Function)
+        setterFn(false)
+    }
     else {
         navigator.geolocation.getCurrentPosition(async function (position) {
             var CurrentPosition: Number[] = []
             CurrentPosition = [position.coords.latitude, position.coords.longitude]
             await getWeatherData(CurrentPosition, Function)
+            setterFn(false)
         })
     }
-
+    
 }
 export async function getWeatherData(position: Number[], Function?: any) {
     var response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${position[0]}&longitude=${position[1]}&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,precipitation_hours,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant,shortwave_radiation_sum,et0_fao_evapotranspiration&timezone=Europe%2FMoscow`).then(rs => rs.json())

@@ -7,20 +7,19 @@ import { Header } from './component/header/header';
 import StateMutual from './ArrayCitys';
 import City_element from './component/city/city';
 import { News_data } from './component/news/news';
+import { Loader } from './UI/Loader/loader';
 
 function App() {
 
   const [data, setData] = useState<IDataWeathear | null>(null)
   const [geoP, setGeoP] = useState<number[]>([])
-  const [isLoading, setIsLoading] = useState<Boolean>(true)
+  const [isLoading, setIsLoading] = useState<Boolean>(false)
   const [value, setValue] = useState<string>('')
   const [ct, setCt] = useState<ICityElement[]>([])
   let Current: ICityElement[] = []
 
   async function getGlobalData(geoP?: Number[]) {
-    setIsLoading(true)
-    await getCurrentParams(setData, data, geoP)
-    setIsLoading(false)
+    await getCurrentParams(setData, data, geoP, setIsLoading)
   }
 
   function HandleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -30,15 +29,14 @@ function App() {
     setCt(Current)
   }
 
+
   useEffect(() => {
     geoP.length !== 0 ? getGlobalData(geoP) : getGlobalData()
   }, [geoP])
   return (
     <div className="App">
       {isLoading ?
-        <div>
-          Loading...
-        </div>
+       <Loader/>
         :
         <div className="wrapper">
           <div className="left_menu">
