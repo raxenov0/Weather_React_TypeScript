@@ -1,0 +1,39 @@
+.wrapper{
+    width: 90%;
+    border-radius: 12px;
+    margin: 30px auto;
+    background-color: rgb(229, 240, 249,0.8);
+    cursor: pointer;
+}
+.text_img{
+    display: flex;
+}
+.text{
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 12px 0 0 12px;
+}
+.p{
+    margin: 5px 0 10px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.img_new{
+    width: 40%;
+    border-radius:  0 12px 12px 0;
+    max-height: 145px;
+    margin: auto;
+}
+.main_text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 18px;
+}
+@media(max-width: 1000px){
+	.img_new{
+    display: none;
+    }
+  }

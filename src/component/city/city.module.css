@@ -1,0 +1,21 @@
+.wrapper{
+    min-width: 130px;
+    height: 40px;
+    border: 2px solid rgb(23, 21, 21, 0.3);
+    background-color: rgb(23, 21, 21, 0.5);
+    color: rgb(191 191 191);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.4s;
+    text-align: center;
+    padding: 0 4px;
+}
+.wrapper:hover{
+    background-color: rgb(23, 21, 21);
+    color:white
+}

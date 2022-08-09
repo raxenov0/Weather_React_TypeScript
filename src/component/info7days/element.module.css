@@ -1,0 +1,90 @@
+.wrapper{
+    padding:  15px;
+    width: 83px;
+    margin: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    font-weight: 600;
+}
+.wrapper:nth-child(1){
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+.wrapper:nth-child(1) .top .official1{
+    margin-bottom: 0px;
+}
+.top{
+    display: flex;
+    flex-direction: column;
+    width: 102px;
+    height: 175px;
+}
+.official1{
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+.official2{
+    font-size: 18px;
+}
+.day_week{
+    font-size: 28px;
+    font-family: 'Noto Sans';
+    margin: 10px 40%;
+}
+
+.wrapper1{
+    padding: 0 15px;
+    margin: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 20px;
+    font-family: 'Noto Sans';
+}
+.bottom p{
+    font-size: 18px;
+}
+
+.sunset_sunrise{
+    display: flex;
+    font-family: 'Noto Sans';
+}
+.sunrise, .sunset{
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
+.mutual_info{
+    display: flex;
+    flex-direction: column;
+}
+.mutual_info p{
+    margin: 0;
+    margin-bottom: 20px;
+}
+@media(max-width: 768px){
+	
+    .sunrise img, .sunset img{
+        width: 70px;
+    }
+    .mutual_info p{
+        font-size: 20px;
+    }
+  }

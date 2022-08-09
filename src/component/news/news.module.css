@@ -1,0 +1,24 @@
+.wrapper{
+    margin: 40px auto 0;
+    padding: 10px;
+    width: 80%;
+    background-color: rgb(131, 142, 152, 0.4);
+    border-radius: 12px;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    height: 40px;
+    
+}
+.header p{
+    font-size: 24px;
+    margin-right: 15px;
+    color: white;
+    font-weight: 600;
+}
+.images{
+    height: 40px;
+}

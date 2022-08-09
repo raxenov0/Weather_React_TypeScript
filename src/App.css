@@ -1,38 +1,218 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  height: auto;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: auto;
+}
+.left_menu{
+  width: 55%;
+  backdrop-filter: blur(2px);
+}
+.right_menu{
+  width: 50%;
+  backdrop-filter: blur(10px);
+  background-color: rgba(36, 32, 32, 0.5);;
+}
+.header_item{
+    
+  margin-bottom: 100px;
+}
+.container{
+  width: 100%;
+  height: 192px;
+  overflow: hidden;
+}
+.scrolling{
+    margin: 0 auto;
+    width: 90%;
+    overflow-x: hidden;
+    padding: 0 10px; 
+    max-height: 100%;
+    overflow-y: auto;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.scrolling::-webkit-scrollbar {
+  width: 0px;
+  background-color: #f9f9fd;
+}
+.group_search      { 
+  position:relative; 
+  width: 75%;
+  max-width: 700px;
+  margin-right: 40px;
+}
+.input_search         {
+  font-size:26px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width: 100%;
+  border:none;
+  border-bottom:1px solid #757575;
+  background-color: rgb(0, 0, 0,0);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.input_search:focus     { outline:none; }
+  
+  /* LABEL ======================================= */
+.label_search          {
+  color:rgb(207 201 201); 
+  font-size:26px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+  
+  /* active state */
+.input_search:focus ~ .label_search, .input_search:valid ~ label    {
+  top:-30px;
+  font-size:22px;
+  color:#e6a822;
+}
+  
+  /* BOTTOM BARS ================================= */
+.bar  { 
+  position:relative; 
+  display:block;
+}
+.bar:before, .bar:after   {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:rgb(233 128 45); 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+   right:50%; 
+}
+  
+  /* active state */
+.input_search:focus ~ .bar:before, .input_search:focus ~ .bar:after {
+  width:50%;
+}
+  
+  /* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+  
+  /* active state */
+.input_search:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+.form_search{
+  display: flex;
+  margin: 90px auto 50px;
+  width: 90%;
+  max-width: 500px;
+}
+  /* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#e6a822; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#e6a822; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#e6a822; }
+  to  { width:0; background:transparent; }
+}
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200,900');
+  
+.btn {
+  margin: 10px 0 0 0;
+  background: #222;
+  height: 40px;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  color: #757575;
+  font-size: 22px;
+  font-family: 'Cookie', cursive;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-top: 5px;
+}
+  
+.btn .circle {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  overflow: hidden;
+  transition: 500ms;
+}
+  
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 10px;
+}
+  
+.btn:hover {
+  background: transparent;
+}
+.btn:hover .noselect{
+  color:#e6a822 
+}
+  
+.btn:hover .circle {
+  height: 40px;
+  width: 100px;
+  left: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #e6a822;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media(max-width: 880px){	
+  .navLink a {
+    font-size: 16px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media(max-width: 768px){
+	
+  .wrapper{
+    flex-direction: column;
+  }
+  .left_menu,.right_menu{
+     width: 100%;
   }
 }
