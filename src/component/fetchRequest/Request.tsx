@@ -12,6 +12,11 @@ export async function getCurrentParams(Function: any, Data: IDataWeathear | null
             CurrentPosition = [position.coords.latitude, position.coords.longitude]
             await getWeatherData(CurrentPosition, Function)
             setterFn(false)
+        }, async function () {
+            var CurrentPosition: Number[] = []
+            CurrentPosition = [	55.7522, 37.6156]
+            await getWeatherData(CurrentPosition, Function)
+            setterFn(false)
         })
     }
     
@@ -42,6 +47,6 @@ export async function getCurrentCity(position: Number[], Function: any, Data: ID
 }
 
 export async function getNewsData() {
-    const responce = await fetch(`https://newsapi.org/v2/everything?q=something&from=2022-07-10&sortBy=publishedAt&pageSize=2&apiKey=2e2a820c0ff34caa897e561c0222518e`).then(response => response.json())
+    const responce = await fetch(`https://newsapi.org/v2/everything?q=something&sortBy=publishedAt&pageSize=2&apiKey=${process.env.REACT_APP_API_KEY_NEWS}`).then(response => response.json())
     return responce.articles
 }
