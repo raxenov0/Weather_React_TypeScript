@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
 import './App.css';
 import { getCurrentParams } from './component/fetchRequest/Request';
 import { ICityElement, IDataWeathear } from './component/type/type';
@@ -8,6 +8,7 @@ import StateMutual from './ArrayCitys';
 import City_element from './component/city/city';
 import { News_data } from './component/news/news';
 import { Loader } from './UI/Loader/loader';
+
 
 function App() {
 
@@ -22,11 +23,18 @@ function App() {
     await getCurrentParams(setData, data, geoP, setIsLoading)
   }
 
+
+  const timerHandler: any = useRef()
+
   function HandleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    clearTimeout(timerHandler.current)
     setValue(e.target.value)
-    if (e.target.value.length) Current = StateMutual.filter((element) => element.city.toLowerCase().includes(e.target.value.toLowerCase()));
-    else Current = StateMutual
-    setCt(Current)
+    timerHandler.current = setTimeout(() => {
+      if (e.target.value.length) Current = StateMutual.filter((element) => element.city.toLowerCase().includes(e.target.value.toLowerCase()));
+      else Current = StateMutual
+      setCt(Current)
+    }, 500)
+
   }
 
 
@@ -36,12 +44,12 @@ function App() {
   return (
     <div className="App">
       {isLoading ?
-       <Loader/>
+        <Loader />
         :
         <div className="wrapper">
           <div className="left_menu">
             <Header city={data?.city} />
-            <Info7days Props={data}/>
+            <Info7days Props={data} />
           </div>
           <div className="right_menu">
             <form className='form_search'>

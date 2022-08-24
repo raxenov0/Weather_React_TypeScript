@@ -23,7 +23,7 @@ export async function getCurrentParams(Function: any, Data: IDataWeathear | null
 }
 export async function getWeatherData(position: Number[], Function?: any) {
     var response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${position[0]}&longitude=${position[1]}&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,precipitation_hours,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant,shortwave_radiation_sum,et0_fao_evapotranspiration&timezone=Europe%2FMoscow`).then(rs => rs.json())
-    var response2 = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${position[0]}&lon=${position[1]}&limit=5&appid=${process.env.REACT_APP_API_KEY}`).then(rs => rs.json())
+    var response2 = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${position[0]}&lon=${position[1]}&limit=5&appid=6b66fdc6e2ef0bb788b8a0272a0318ca`).then(rs => rs.json())
     var response3 = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${position[0]}&longitude=${position[1]}&hourly=temperature_2m,relativehumidity_2m,pressure_msl,weathercode&current_weather=true&timezone=Europe%2FMoscow`).then(rs => rs.json())
     Function({
         positionCur: position,
@@ -40,13 +40,13 @@ export async function getWeatherData(position: Number[], Function?: any) {
 }
 
 export async function getCurrentCity(position: Number[], Function: any, Data: IDataWeathear | null) {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${position ? position[0] : 40}&lon=${position ? position[1] : 40}&limit=5&appid=${process.env.REACT_APP_API_KEY}`).then(rs => rs.json())
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${position ? position[0] : 40}&lon=${position ? position[1] : 40}&limit=5&appid=f79fbc27080444899621a46a9452629a`).then(rs => rs.json())
     Function?.({
         ...Data, city: response[0].name
     })
 }
 
 export async function getNewsData() {
-    const responce = await fetch(`https://newsapi.org/v2/everything?q=something&sortBy=publishedAt&pageSize=2&apiKey=${process.env.REACT_APP_API_KEY_NEWS}`).then(response => response.json())
+    const responce = await fetch(`https://newsapi.org/v2/everything?q=something&sortBy=publishedAt&pageSize=2&apiKey=f79fbc27080444899621a46a9452629a`).then(response => response.json())
     return responce.articles
 }
