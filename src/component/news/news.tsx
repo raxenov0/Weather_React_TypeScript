@@ -10,7 +10,7 @@ export const News_data = () => {
 
     async function setNews() {
         const responce = await getNewsData()
-        setNewsData(responce)
+        setNewsData(responce.News.slice(0,2))
     }
     useEffect(() => {
         setNews()
