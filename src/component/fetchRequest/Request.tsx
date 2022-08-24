@@ -50,5 +50,3 @@ export async function getNewsData() {
     const responce = await fetch(`https://newsapi.in/newsapi/country=643?news.php?key=h164MSSDWUoqLas8ecWki5mUdgAS4D&category=russia&content_type=full_content`).then(response => response.json())
     return responce
 }
-
-

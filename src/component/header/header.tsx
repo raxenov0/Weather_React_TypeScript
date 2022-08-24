@@ -16,7 +16,7 @@ export const Header: React.FunctionComponent<any> = ({ city }) => {
 
     return (
         <header className={header.wrapper} id='root'>
-            <div className={header.date}>{`${Day}, ${parseInt(current_split_day[0])} ${month} ${current_split_day[2]} `}</div>
+            <div className={header.date}>{`${Day}, ${parseInt(current_split_day[0])} ${month} ${current_split_day[2]?current_split_day[2]:''} `}</div>
             <div className={header.city}>{city}</div>
         </header>
     )

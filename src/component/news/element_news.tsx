@@ -3,7 +3,6 @@ import element from './element_news.module.css'
 
 
 export const Element_news: React.FunctionComponent<any> = ({news}) => {
-    console.log(news)
     return (
         <div className={element.wrapper}>
             <div className={element.text_img}>
